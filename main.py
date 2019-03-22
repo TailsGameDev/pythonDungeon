@@ -1,5 +1,6 @@
 from sala import Sala
 from enum import Enum
+from personagem import Personagem
 
 def constroiMapa():
     salaPrincipal = Sala("Voce esta em uma caverna umida e sombria, e "+
@@ -12,7 +13,10 @@ def constroiMapa():
 
     def olharEspelho():
         print("na penumbra voce ve sua propria silhueta")
-    salaNorte.itens = { "olhar espelho": olharEspelho }
+    salaNorte.actions = { "olhar espelho": olharEspelho }
+
+    goblin = Personagem("goblin")
+    salaPrincipal.inimigos.append(goblin)
 
     return salaPrincipal
 
@@ -21,6 +25,8 @@ state = Enum('state', 'sala')
 salaAtual = constroiMapa()
 staticSala = Sala()
 
+personagem = Personagem()
+
 inpt = ""
 
 estadoAtual = state.sala
@@ -28,7 +34,7 @@ estadoAtual = state.sala
 while (inpt != "quit" and inpt != "q"):
     #out
     if(estadoAtual == state.sala):
-        salaAtual = staticSala.salaFSM(salaAtual)
+        salaAtual = staticSala.salaFSM(salaAtual, personagem)
         inpt = input("voce voltou para o menu. O que quer fazer?\n")
     #next state logic
 
