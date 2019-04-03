@@ -47,7 +47,10 @@ class Sala:
                     proximoEstado = state.logOptions
 
             elif(estadoAtual == state.combateFSM):
-                proximoEstado = retornoCombate
+                if retornoCombate == state.venceuCombate:
+                    proximoEstado = state.venceuCombate
+                elif retornoCombate == state.fugir:
+                    proximoEstado = state.logOptions #provisorio, implementar state fugir depois
 
             elif(estadoAtual == state.logOptions):
                 if inpt in salaAtual.directions:

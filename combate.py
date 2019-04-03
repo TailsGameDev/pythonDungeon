@@ -20,11 +20,13 @@ class Combate:
                 print("Ha um inimigo hostil na sala.")
                 print(self.inimigos[0].nome + " estah se preparando "+
                 "para atacar!")
+
             elif estadoAtual == estadosCombate.combate:
                 print("Suas opcoes sao: ")
                 for x in self.combatOptions:
                     print(x)
                 inpt = input("O que voce faz?\n")
+
             elif estadoAtual == estadosCombate.ataques:
                 self.personagem.atacar(self.inimigos[0])
                 if(self.inimigos[0].vida <= 0):
@@ -37,11 +39,15 @@ class Combate:
             proximoEstado = estadoAtual
             if estadoAtual == estadosCombate.anunciaCombate:
                 proximoEstado = estadosCombate.combate
+
             elif estadoAtual == estadosCombate.combate:
                 if inpt == "atacar":
                     proximoEstado = estadosCombate.ataques
                 elif inpt == "fugir":
-                    return state.logOptions
+                    return state.fugir
+                elif inpt == "q": #placeholder, malhorar essas duas linhas
+                    return state.fugir # mas a ideia eh conseguir sair com o q
+
             elif estadoAtual == estadosCombate.ataques:
                 if(self.personagem.vida <= 0):
                     return state.morte
