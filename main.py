@@ -16,21 +16,20 @@ def constroiMapa():
     salaNorte.actions = { "olhar espelho": olharEspelho }
 
     goblin = Personagem("goblin")
-    salaPrincipal.inimigos.append(goblin)
+    #salaPrincipal.inimigos.append(goblin)
 
     return salaPrincipal
 
+#INICIO DA EXECUCAO:
 state = Enum('state', 'sala')
-
 salaAtual = constroiMapa()
 staticSala = Sala()
-
 personagem = Personagem()
-
 inpt = ""
-
 estadoAtual = state.sala
+salaAtual = staticSala.salaFSM(salaAtual, personagem)
 
+'''
 while (inpt != "quit" and inpt != "q"):
     #out
     if(estadoAtual == state.sala):
@@ -39,3 +38,4 @@ while (inpt != "quit" and inpt != "q"):
     #next state logic
 
     #memory element
+'''
