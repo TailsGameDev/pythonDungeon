@@ -16,7 +16,7 @@ def constroiMapa():
     salaNorte.actions = { "olhar espelho": olharEspelho }
 
     goblin = Personagem("goblin")
-    #salaPrincipal.inimigos.append(goblin)
+    salaPrincipal.inimigos.append(goblin)
 
     return salaPrincipal
 

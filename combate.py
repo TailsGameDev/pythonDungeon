@@ -5,10 +5,13 @@ class Combate:
     def __init__(self, personagem, inimigos):
         self.personagem = personagem
         self.inimigos = inimigos
+        '''
         self.combatOptions = {
             "fugir" : estadosCombate.nenhum ,
             "atacar": estadosCombate.combate
         }
+        '''
+        self.combatOptions = ["fugir", "atacar"]
 
     def combateFSM(self, state):
         estadoAtual = estadosCombate.anunciaCombate
